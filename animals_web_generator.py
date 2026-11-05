@@ -1,4 +1,3 @@
-import json
 import os
 
 import requests
@@ -10,13 +9,8 @@ API_KEY = os.getenv("NINJAS_API_KEY")
 API_URL = "https://api.api-ninjas.com/v1/animals"
 
 headers = {"X-Api-Key": API_KEY}
-params = {"name": "Fox"}
-
-
-def load_data(file_path):
-    """Loads a JSON file"""
-    with open(file_path, "r", encoding="utf-8") as handle:
-        return json.load(handle)
+animal_name = input("Enter an animal name: ")
+params = {"name": animal_name}
 
 
 def serialize_animal(animal_obj):
