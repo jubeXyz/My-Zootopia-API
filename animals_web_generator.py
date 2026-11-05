@@ -47,8 +47,11 @@ animals_data = response.json()
 
 output = ""
 
-for animal in animals_data:
-    output += serialize_animal(animal)
+if not animals_data:
+    output = f'<h2 style="text-align: center;">The animal "{animal_name}" doesn\'t exist.</h2>'
+else:
+    for animal in animals_data:
+        output += serialize_animal(animal)
 
 
 with open("animals_template.html", "r", encoding="utf-8") as file:
