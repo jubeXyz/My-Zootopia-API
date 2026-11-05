@@ -1,16 +1,6 @@
-import os
+import data_fetcher
 
-import requests
-from dotenv import load_dotenv
-
-load_dotenv()
-API_KEY = os.getenv("NINJAS_API_KEY")
-
-API_URL = "https://api.api-ninjas.com/v1/animals"
-
-headers = {"X-Api-Key": API_KEY}
 animal_name = input("Enter an animal name: ")
-params = {"name": animal_name}
 
 
 def serialize_animal(animal_obj):
@@ -41,9 +31,7 @@ def serialize_animal(animal_obj):
     return output
 
 
-response = requests.get(API_URL, headers=headers, params=params)
-response.raise_for_status()
-animals_data = response.json()
+animals_data = data_fetcher.fetch_data(animal_name)
 
 output = ""
 
